@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ldachu.dialogutil.dialog.CommonDialog;
-import com.example.ldachu.dialogutil.dialog.EditDialog;
+import com.example.ldachu.dialogutil.dialog.CustomeDialog;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,31 +31,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_common:
-                initCommon();
+                initEdit();
                 break;
         }
     }
 
     private void initEdit() {
-        EditDialog editDialog = new EditDialog();
-        editDialog.show(getSupportFragmentManager(),"Edit");
+     new CustomeDialog().show(getSupportFragmentManager(),"test");
     }
 
     private void initCommon() {
-        CommonDialog commonDialog = new CommonDialog();
 
-        commonDialog.getConfirmDialog("标题","内容 ","你好","测试",new CommonDialog.OnDialogListener(){
-            @Override
-            public void onPositive() {
-                Toast.makeText(MainActivity.this, "米亚", Toast.LENGTH_SHORT).show();
-            }
+        CommonDialog show = new CommonDialog()
+                .setTitle("标题你懂的")
+                .setMessage("设置内容设置内容设置内容")
+                .setGravity(Gravity.CENTER)
+                .setDimAmount(0.3f)
+                .addDialogListener(new CommonDialog.OnDialogListener() {
+                    @Override
+                    public void onPositive() {
+                        Toast.makeText(MainActivity.this, "确定", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setOutCancel(false)
+                .setPositive("确定")
+                .setNegative("取消")
+                .show(getSupportFragmentManager());
 
-        });
-        commonDialog.show(getSupportFragmentManager(),"CommonDialog");
-
-        commonDialog.setPercent(1);
-        commonDialog.setGravity(Gravity.BOTTOM);
-        commonDialog.setDimAmount(0);
 
 
     }
