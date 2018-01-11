@@ -7,12 +7,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ldachu.dialogutil.dialog.BaseDialog;
 import com.example.ldachu.dialogutil.dialog.CommonDialog;
 import com.example.ldachu.dialogutil.dialog.CustomeDialog;
+import com.example.ldachu.dialogutil.dialog.ShowDialog;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mTvCommon;
+    private BaseDialog mShowDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +28,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTvCommon = (TextView) findViewById(R.id.tv_common);
 
         mTvCommon.setOnClickListener(this);
+        findViewById(R.id.tv_second).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_common:
-                initEdit();
+                initShow();
+                break;
+            case R.id.tv_second:
+//                mShowDialog.dismiss();
+                Toast.makeText(this, "测试", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
+    private void initShow() {
+        mShowDialog = new ShowDialog()
+                .setTitle("收货成功")
+                .setOutCancel(false)
+                .show(getSupportFragmentManager());
+        mShowDialog.dismiss();
+    }
+
     private void initEdit() {
-     new CustomeDialog().show(getSupportFragmentManager(),"test");
+        new CustomeDialog()
+                .setMessage("测试内容你懂的有的")
+                .setRadius(10)
+                .setPercent(0.8f)
+                .addDialogListener(new BaseDialog.OnDialogListener() {
+                    @Override
+                    public void onPositive() {
+                        Toast.makeText(MainActivity.this, "加油", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .show(getSupportFragmentManager());
     }
 
     private void initCommon() {

@@ -29,7 +29,6 @@ public class CommonDialog extends AppCompatDialogFragment {
 
 
     private OnDialogListener mListener;
-
     private String      mTitle;
     private String      mMessage;
     private String      mPositive="确定";
@@ -40,13 +39,8 @@ public class CommonDialog extends AppCompatDialogFragment {
     private int         mMesaggeColor;
     private float mDimAmount = -1;
     private float mPercent = 0.9f;
-
-
     private int mGravity;
-    private boolean isOutCancel;
-
-
-
+    private boolean isOutCancel=true;
     private int resId;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -80,7 +74,7 @@ public class CommonDialog extends AppCompatDialogFragment {
 
         mDialog = builder.create();
         mDialog.show();
-        //设置按钮的颜色
+        //设置按钮的颜色,后期设置按钮背景颜色
         if(mButtonColor!=0&&mDialog!=null){
             mDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(mButtonColor);
             mDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(mButtonColor);
@@ -152,37 +146,12 @@ public class CommonDialog extends AppCompatDialogFragment {
         if(resId!=0){
             window.setWindowAnimations(resId);
         }
-        //设置对话框点击外部不取消
+        //设置对话框点击外部不取消,默认是可取消
         mDialog.setCanceledOnTouchOutside(isOutCancel);
         return  mDialog;
     }
 
 
-    /**
-     *
-     * @param title 标题
-     * @param message 内容
-     * @param listener 监听事件
-     */
-    public void getConfirmDialog(String title,String message,OnDialogListener listener){
-        getConfirmDialog(title,message,"确定","取消",listener);
-    }
-
-    /**
-     * 基本信息
-     * @param title 标题
-     * @param message 内容
-     * @param positive 确定文本
-     * @param negative 取消文本
-     * @param listener 监听事件
-     */
-    public void getConfirmDialog(String title,String message,String positive,String negative,OnDialogListener listener){
-        mTitle = title;
-        mMessage = message;
-        mPositive = positive;
-        mNegative = negative;
-        mListener = listener;
-    }
 
 
     /**

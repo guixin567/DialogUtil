@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
+    android:id="@+id/container"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/shape_cor5_fff"
+    android:paddingTop="20dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
@@ -11,14 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/tv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:text="你还没有收货地址，先去设置吧"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
         />
 
     <android.support.constraint.Guideline
@@ -33,7 +36,7 @@
         android:id="@+id/v_left"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:background="#ddd"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/gl_v"
@@ -43,32 +46,49 @@
         android:id="@+id/v_right"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
-        android:background="#d70522"
+        android:layout_marginTop="40dp"
+        android:background="#ddd"
         app:layout_constraintLeft_toRightOf="@+id/gl_v"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_message"/>
 
-
     <TextView
-        android:background="@drawable/shape_cor5_bottomleft_fff"
+        android:id="@+id/tv_cancel"
         android:gravity="center"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:text="取消"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/gl_v"
+        app:layout_constraintRight_toLeftOf="@+id/v_center"
         app:layout_constraintTop_toBottomOf="@+id/v_left"/>
 
+
+    <View
+        app:layout_constraintTop_toBottomOf="@+id/v_left"
+        app:layout_constraintLeft_toRightOf="@+id/tv_cancel"
+        app:layout_constraintRight_toLeftOf="@+id/tv_confirm"
+        android:background="#ddd"
+        android:id="@+id/v_center"
+        android:layout_width="1dp"
+        android:layout_height="45dp"/>
     <TextView
-        android:textColor="#fff"
+        android:id="@+id/tv_confirm"
+        android:textColor="#333"
         android:gravity="center"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:background="@drawable/shape_cor5_d70522"
+        android:layout_height="45dp"
         android:text="确定"
-        app:layout_constraintLeft_toRightOf="@+id/gl_v"
+        app:layout_constraintLeft_toRightOf="@+id/v_center"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v_right"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
