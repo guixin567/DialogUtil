@@ -8,6 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="EnterExitAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/show_in</item>
+        <item name="android:windowExitAnimation">@anim/show_out</item>
+    </style>
+
+    <style name="Photo" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/photo_in</item>
+        <item name="android:windowExitAnimation">@anim/photo_out</item>
+    </style>
+
 
 
 </resources>

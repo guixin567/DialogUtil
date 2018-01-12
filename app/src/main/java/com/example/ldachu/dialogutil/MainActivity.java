@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.ldachu.dialogutil.dialog.BaseDialog;
 import com.example.ldachu.dialogutil.dialog.CommonDialog;
 import com.example.ldachu.dialogutil.dialog.CustomeDialog;
-import com.example.ldachu.dialogutil.dialog.ShowDialog;
+import com.example.ldachu.dialogutil.dialog.PhotoDialog;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,18 +38,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 initShow();
                 break;
             case R.id.tv_second:
-//                mShowDialog.dismiss();
+                mShowDialog.dismiss();
                 Toast.makeText(this, "测试", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
     private void initShow() {
-        mShowDialog = new ShowDialog()
-                .setTitle("收货成功")
-                .setOutCancel(false)
-                .show(getSupportFragmentManager());
-        mShowDialog.dismiss();
+      new PhotoDialog()
+                .setAnimate(R.style.Photo)
+              .setGravity(Gravity.BOTTOM)
+              .show(getSupportFragmentManager());
     }
 
     private void initEdit() {

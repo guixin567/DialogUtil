@@ -219,7 +219,7 @@ public class BaseDialog extends AppCompatDialogFragment {
      * 设置动画
      * @param resId
      */
-    public BaseDialog setResId(int resId) {
+    public BaseDialog setAnimate(int resId) {
         this.resId = resId;
         return this;
     }
